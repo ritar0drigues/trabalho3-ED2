@@ -17,12 +17,17 @@ int main() {
     construirGrafoHanoi(&g);
     printf("Grafo construido com sucesso! (%d vertices)\n\n", NUM_ESTADOS);
 
-    // Leitura da configuração inicial
+// Leitura da configuração inicial
     printf("Digite a configuracao INICIAL dos 4 discos:\n");
     for(int i = 0; i < NUM_DISCOS; i++) {
         do {
             printf("Pino do Disco %d (1-3): ", i+1);
             scanf("%d", &inicio.posicoes[i]);
+            
+            // Adicionando aviso de erro
+            if (inicio.posicoes[i] < 1 || inicio.posicoes[i] > 3) {
+                printf("Entrada invalida! O pino deve ser 1, 2 ou 3.\n");
+            }
         } while(inicio.posicoes[i] < 1 || inicio.posicoes[i] > 3);
     }
 
@@ -32,6 +37,11 @@ int main() {
         do {
             printf("Pino do Disco %d (1-3): ", i+1);
             scanf("%d", &fim.posicoes[i]);
+            
+            // Adicionando aviso de erro
+            if (fim.posicoes[i] < 1 || fim.posicoes[i] > 3) {
+                printf(">> Entrada invalida! O pino deve ser 1, 2 ou 3.\n");
+            }
         } while(fim.posicoes[i] < 1 || fim.posicoes[i] > 3);
     }
 

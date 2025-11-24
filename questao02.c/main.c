@@ -12,16 +12,31 @@ int main() {
     
     construirGrafoHanoi(&g);
     
-    printf("Digite a configuracao INICIAL (ex: 1 1 1 1):\n");
+    printf("Digite a configuracao INICIAL (1, 2 ou 3 para cada disco):\n");
     for(int i = 0; i < NUM_DISCOS; i++) {
-        scanf("%d", &inicio.posicoes[i]);
+        do {
+            printf("Pino do Disco %d: ", i + 1);
+            scanf("%d", &inicio.posicoes[i]);
+            
+            if (inicio.posicoes[i] < 1 || inicio.posicoes[i] > 3) {
+                printf("Erro: Valor invalido! Digite apenas 1, 2 ou 3.\n");
+            }
+        } while (inicio.posicoes[i] < 1 || inicio.posicoes[i] > 3);
     }
 
-    printf("Digite a configuracao FINAL (ex: 3 3 3 3):\n");
-     for(int i = 0; i < NUM_DISCOS; i++) {
-        scanf("%d", &fim.posicoes[i]);
-    }
+    // --- BLINDAGEM DA ENTRADA FINAL ---
+    printf("\nDigite a configuracao FINAL (1, 2 ou 3 para cada disco):\n");
+    for(int i = 0; i < NUM_DISCOS; i++) {
+        do {
+            printf("Pino do Disco %d: ", i + 1);
+            scanf("%d", &fim.posicoes[i]);
 
+            if (fim.posicoes[i] < 1 || fim.posicoes[i] > 3) {
+                printf("Erro: Valor invalido! Digite apenas 1, 2 ou 3.\n");
+            }
+        } while (fim.posicoes[i] < 1 || fim.posicoes[i] > 3);
+    }
+    
     int idInicio = estadoParaId(inicio);
     int idFim = estadoParaId(fim);
 
