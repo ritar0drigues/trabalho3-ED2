@@ -25,7 +25,7 @@ int obterIndice(char *coord) {
     if (colChar < 'A' || colChar > 'H') return -1;
     
     int col = colChar - 'A';
-    int linha = atoi(&coord[1]) - 1; // "1" vira 0
+    int linha = atoi(&coord[1]) - 1; // "1" vira 0z
     
     if (linha < 0 || linha >= NUM_LINHAS) return -1;
     
